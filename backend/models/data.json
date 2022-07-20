@@ -1,0 +1,22 @@
+[
+    {
+        "id": "1",
+        "title": "einkaufen",
+        "checked": false
+    },
+    {
+        "id": "2",
+        "title": "lernen",
+        "checked": true
+    },
+    {
+        "id": "3",
+        "title": "essen",
+        "checked": false
+    },
+    {
+        "id": "4",
+        "title": "schlafen",
+        "checked": true
+    }
+]
