@@ -2,23 +2,51 @@
     {
         "title": "kinder abholen",
         "id": "21ivu_h96po7__wVrHFXM",
-        "checked": false,
         "name": "Reise",
-        "img": "https://unsplash.it/300/150?id=1"
+        "img": "https://unsplash.it/300/150?id=1",
+        "checklist": [
+            {
+                "title": "ticket kaufen",
+                "id": "21ivu_h96po7__wVrHFXM",
+                "checked": true
+            },
+            {
+                "title": " einkaufen gehen",
+                "id": "21ivu_h96po7__wVrHFXM",
+                "checked": true
+            },
+            {
+                "title": "schlafen",
+                "id": "21ivu_h96po7__wVrHFXM",
+                "checked": true
+            }
+        ],
+        "checked": false
     },
     {
         "title": "kinder abholen",
         "id": "wQJdaCDx96NsNAnkeFqzj",
-        "checked": false,
         "name": "Arbeit",
-        "img": "https://unsplash.it/300/150?id=2"
+        "img": "https://unsplash.it/300/150?id=2",
+        "checklist": [
+            {
+                "title": "ticket kaufen",
+                "id": "21ivu_h96po7__wVrHFXM",
+                "checked": false
+            }
+        ]
     },
     {
         "title": "kinder abholen",
         "id": "uDHWXFMDmPfNG_mI352cE",
-        "checked": true,
         "name": "Kinder",
-        "img": "https://unsplash.it/300/150?id=3"
+        "img": "https://unsplash.it/300/150?id=3",
+        "checklist": [
+            {
+                "title": "kinder abholen",
+                "id": "21ivu_h96po7__wVrHFXM",
+                "checked": false
+            }
+        ]
     }
-
 ]

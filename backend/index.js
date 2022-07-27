@@ -1,13 +1,9 @@
-// const express = require("express");
+const express = require("express");
 const app = express();
-// const { readJSONFile, writeJSONFile } = require("./jsonFileSystem");
-// const cors = require("cors");
-// const { v4: uuid } = require("uuid");
-
-import { nanoid } from "nanoid";
-import cors from "cors";
-import express from "express";
-import { readJSONFile, writeJSONFile } from "./jsonFileSystem.js";
+const { readJSONFile, writeJSONFile } = require("./jsonFileSystem");
+const cors = require("cors");
+const { v4: uuid } = require("uuid");
+const multer = require("multer");
 
 const jsonPath = "./models/data.json";
 
@@ -25,6 +21,21 @@ app.get("/dashboard", (req, res) => {
   readJSONFile("./models/data.json").then((data) => {
     res.json(data);
   });
+});
+
+app.get("/detail/:id", (req, res) => {
+  const gesuchterCheckListId = req.params.id;
+
+  readJSONFile("./models/data.json").then((data) => {
+    const gesuchterCheckList = data.find(
+      (item) => item.id === gesuchterCheckListId
+    );
+    res.json(gesuchterCheckList);
+    console.log(gesuchterCheckList);
+  });
+  // const checklist = beitrageArray.find((b) => b.id === gesuchterCheckListId);
+  // console.log("checklist", checklist);
+  // res.json(checklist);
 });
 
 app.put("/checkedlist/:id", (req, res) => {
@@ -56,22 +67,26 @@ app.put("/reset", (req, res) => {
   });
 });
 
-app.post("/dashboard", (req, res) => {
+const upload = multer({ dest: "./uploads" });
+const uploadFilesMiddleware = upload.single("img");
+
+app.post("/dashboard", uploadFilesMiddleware, (req, res) => {
+  console.log(req.body);
+  console.log(req.file);
   const newList = {
     title: req.body.title,
-    // checked: req.body.checked,
-    id: nanoid(),
+    name: req.body.name,
+    img: req.file.filename,
+    checked: false,
+    id: uuid(),
   };
   console.log(newList);
-  readJSONFile(jsonPath) // reviews lesen
+  readJSONFile(jsonPath) // lesen
     .then((data) => [newList, ...data])
     .then((updatedData) => writeJSONFile(jsonPath, updatedData)) // reviews schreiben
     .then((updatedData) => res.json(updatedData)); // antworten
 });
 
-// writeJSONFile("./models/data.json", newList).then(() => {
-//     res.json(newList);
-//   });
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });

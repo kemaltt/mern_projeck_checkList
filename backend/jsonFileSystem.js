@@ -1,7 +1,6 @@
-// const fs = require("fs");
-import fs from "fs";
+const fs = require("fs");
 
-export function readJSONFile(path) {
+const readJSONFile = (path) => {
   return new Promise((resolve, reject) => {
     fs.readFile(path, (err, data) => {
       if (err) {
@@ -11,9 +10,9 @@ export function readJSONFile(path) {
       }
     });
   });
-}
+};
 
-export function writeJSONFile(path, data) {
+const writeJSONFile = (path, data) => {
   return new Promise((resolve, reject) => {
     fs.writeFile(path, JSON.stringify(data, null, 4), (err) => {
       if (err) {
@@ -23,9 +22,9 @@ export function writeJSONFile(path, data) {
       }
     });
   });
-}
+};
 
-// module.exports = {
-//   readJSONFile,
-//   writeJSONFile,
-// };
+module.exports = {
+  readJSONFile,
+  writeJSONFile,
+};
